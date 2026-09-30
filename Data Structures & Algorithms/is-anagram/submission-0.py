@@ -1,21 +1,20 @@
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
-        h1 = {}
+        dict1 = {}
+        dict2 = {}
 
-        for x in s:
-            h1[x] = h1.get(x, 0) + 1
-        
-        for y in t:
-            if h1.get(y):
-                h1[y] = h1.get(y) - 1
+        for c in s:
+            if c not in dict1:
+                dict1[c] = 1
             else:
-                return False
+                dict1[c] += 1
         
-        for z in h1:
-            if h1.get(z) != 0:
-                return False
+        for c in t:
+            if c not in dict2:
+                dict2[c] = 1
+            else:
+                dict2[c] += 1
         
 
-        return True
-            
+        return dict1 == dict2
         
